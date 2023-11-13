@@ -1,21 +1,29 @@
-<div id="form">
+<div id="container">
 
-    <h1>Login</h1>
+    <div class="row justify-content-center mt-5">
+        <div class="col-6 mt-5">
+            <h1>Login</h1>
+            <hr>
+            <form action="/users/login" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" />
+                </div>
 
-    <form action="/users/login" method="post">
+                {{#if errorMessage}}
+                <div class="mb-3">
+                    <p class="error">{{errorMessage}}</p>
+                </div>
+                {{/if}}
 
-        <label> Username
-            <input type="text" name="username" />
-        </label>
-
-        <label>Password
-            <input type="password" name="password" />
-        </label>
-
-        <button type="submit">Login</button>
-
-        {{#if errorMessage}}
-        <p class="error">{{errorMessage}}</p>
-        {{/if}}
-    </form>
+                <div class="d-grid">
+                    <input type="submit" class="btn btn-dark mt-2" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
