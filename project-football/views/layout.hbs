@@ -33,12 +33,16 @@
                      Dropdown
                   </a>
                   <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="/login">Login</a></li>
-                     <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
+                     <li><a class="dropdown-item" href="/users/login">Login</a></li>
+                     <li><a class="dropdown-item" href="/users/signup">Sign Up</a></li>
                      <li>
                         <hr class="dropdown-divider">
                      </li>
-                     <li><a class="dropdown-item" href="#">Log Out</a></li>
+                     <li>
+                        <form action="/users/logout" method="POST">
+                           <input type="submit" class="dropdown-item" value="Log out">
+                     </li>
+                     </form>
                   </ul>
                </li>
             </ul>
