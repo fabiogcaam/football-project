@@ -1,5 +1,5 @@
 const axios = require('axios')
-
+const FOOTBALL_KEY = proceess.env.FOOTBALL_KEY
 class PlayerService {
 
     constructor() {
@@ -11,19 +11,20 @@ class PlayerService {
     getAllPlayersByTeam() {
         return this.axiosApp('/players/squads', {
             headers: {
-                'X-rapidAPI-key': 'clave',
+                'X-rapidAPI-key': FOOTBALL_KEY,
                 'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
             }
         })
     }
 
     getPlayerByIdAndSeason(playerId, playerSeason) {
-        return this.axiosApp('/players', {
-            headers: {
-                'X-rapidAPI-key': 'clave',
-                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-            }
-        })
+        return this.axiosApp('/players',
+            {
+                headers: {
+                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                }
+            })
     }
 
 }
