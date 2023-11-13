@@ -4,14 +4,10 @@ const User = require("../models/User.model")
 const { isLoggedOut } = require('../middleware/route-guard')
 const saltRounds = 10
 
-<<<<<<< HEAD
 // Signup
 router.get('/signup', isLoggedOut, (req, res, next) => res.render('auth/signup'))
 router.post('/signup', isLoggedOut, (req, res, next) => {
-=======
-router.get('/signup', (req, res, next) => res.render('auth/signup'))
-router.post('/signup', (req, res, next) => {
->>>>>>> 68ae3d5283fb146c83d6e7dd47a90123ffb9fbfa
+
 
     let { email, userPwd, username, avatar, description } = req.body
 
