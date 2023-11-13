@@ -1,5 +1,5 @@
 const axios = require('axios')
-const FOOTBALL_KEY = proceess.env.FOOTBALL_KEY
+const FOOTBALL_KEY = process.env.FOOTBALL_KEY
 class LeagueService {
 
     constructor() {
@@ -13,7 +13,7 @@ class LeagueService {
         return this.axiosApp.get('/v3/leagues',
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-Key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -32,6 +32,6 @@ class LeagueService {
 }
 
 
-const LeagueService = new LeagueService()
+const leagueService = new LeagueService()
 
-module.exports = LeagueService
+module.exports = leagueService
