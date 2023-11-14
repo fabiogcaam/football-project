@@ -1,19 +1,20 @@
 <div class="container">
     <div class="row">
-        <h1>Detalle de la liga {{name}}</h1>
+        <h1>Detalle de la liga {{league.[0].league.name}}</h1>
         <div class="col-4">
             <figure>
-                <img src="{{logo}}" alt="{{name}}">
+                <img src="{{league.[0].league.logo}}" alt="{{league.[0].league.name}}">
             </figure>
         </div>
         <div class="col-8">
-            <h3>La liga {{name}} es de tipo: {{type}}</h3>
+            <h3>La liga {{league.[0].league.name}} es de tipo: {{league.[0].league.type}}</h3>
             {{!-- Esto hay que probarlo, que no estoy seguro de que funcione así el el season.[0].year y el siguiente
             --}}
-            <p>Que se organiza en {{country.name}} y lleva un total de {{seasons.length}} jugandose: desde
-                {{seasons.[0].year}} hasta {{seasons.[seasons.length-1].year}}</p>
+            <p>Que se organiza en {{league.[0].country.name}} y lleva un total de {{league.[0].seasons.length}}
+                jugandose: desde
+                {{league.[0].seasons.[0].year}} hasta {{league.[0].seasons.[seasons.length-1].year}}</p>
             <a href="/leagues" class="btn btn-primary">Volver a ligas</a>
-            <a href="/teams" clsas="btn btn-dark">Ver equipos</a>
+            <a href="/teams" class="btn btn-dark">Ver equipos</a>
         </div>
     </div>
 </div>
