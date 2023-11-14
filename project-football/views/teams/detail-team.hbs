@@ -1,14 +1,14 @@
 <div class="container mt-5">
     <div class="row">
-        <h1>Detalle de {{name}}</h1>
+        <h1>Detalle de {{team.name}}</h1>
         <div class="col-4">
             <figure>
-                <img src="{{logo}}" alt="{{name}}">
+                <img src="{{team.logo}}" alt="{{team.name}}">
             </figure>
         </div>
         <div class="col-8">
-            <h3>{{name}}</h3>
-            <p>Procedente de {{country}} fue fundado en {{founded}}</p>
+            <h3>{{team.name}}</h3>
+            <p>Procedente de {{team.country}} fue fundado en {{team.founded}}</p>
             <div>
                 <p>Su estadio se llama {{venue.name}} y está situado en la ciudad de {{venue.city}}</p>
                 <a href="/stadium/{{venue.id}}" class="btn btn-primary">Ver Detalle de Estadio</a>

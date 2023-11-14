@@ -20,12 +20,16 @@ class PlayerService {
         })
     }
 
-    getPlayerByIdAndName(playerId, playerName) {
-        return this.axiosApp(`/v3/players/${playerId}/${playerName}`,
+    getPlayerById(playerId) {
+        return this.axiosApp(`/v3/players`,
             {
                 headers: {
                     'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                },
+                params: {
+                    id: playerId,
+                    season: '2020'
                 }
             })
     }

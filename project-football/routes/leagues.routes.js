@@ -7,7 +7,7 @@ route.get('/', (req, res, next) => {
         .getAllLeagues()
         .then(data => {
             console.log('Estoy aqui')
-            console.log(data)
+            console.log(data.data.response)
             res.render('leagues/leagues-list', { leagues: data.data.response })
         })
         .catch(err => next(err))
