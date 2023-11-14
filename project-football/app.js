@@ -40,6 +40,9 @@ app.use("/teams", teamsRoutes)
 const playersRoutes = require("./routes/players.routes")
 app.use("/players", playersRoutes)
 
+const stadiumsRoutes = require("./routes/stadiums.routes")
+app.use("/stadium", stadiumsRoutes)
+
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

@@ -8,25 +8,15 @@ class StadiumService {
         })
     }
 
-    getAllStadiumsByCountry(countryName) {
-        return this.axiosApp(`/v3/venues/${countryName}`,
+    getStadiumById(stadiumId) {
+        return this.axiosApp(`/v3/venues`,
             {
                 headers: {
                     'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 },
                 params: {
-
-                }
-            })
-    }
-
-    getStadiumById(stadiumId) {
-        return this.axiosApp(`/v3/venues/${stadiumId}`,
-            {
-                headers: {
-                    'X-RapidAPI-key': FOOTBALL_KEY,
-                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                    id: stadiumId,
                 }
             })
     }
