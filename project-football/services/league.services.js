@@ -1,16 +1,17 @@
 const axios = require('axios')
 const FOOTBALL_KEY = process.env.FOOTBALL_KEY
+
 class LeagueService {
 
     constructor() {
 
         this.axiosApp = axios.create({
-            baseURL: 'https://api-football-v1.p.rapidapi.com'
+            baseURL: `https://api-football-v1.p.rapidapi.com`
         })
     }
 
     getAllLeagues() {
-        return this.axiosApp.get('/v3/leagues',
+        return this.axiosApp.get(`/v3/leagues`,
             {
                 headers: {
                     'X-RapidAPI-Key': FOOTBALL_KEY,
@@ -20,11 +21,14 @@ class LeagueService {
     }
 
     getOneLeague(league_id) {
-        return this.axiosApp.get(`/v3/leagues/${league_id}`,
+        return this.axiosApp.get(`/v3/leagues/`,
             {
                 headers: {
                     'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                },
+                params: {
+                    id: league_id
                 }
             })
     }

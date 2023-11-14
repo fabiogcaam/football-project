@@ -1,22 +1,28 @@
-const router = require('express').Router()
+const route = require('express').Router()
 const LeagueService = require('../services/league.services')
 
-router.get('/', (req, res, next) => {
+route.get('/', (req, res, next) => {
 
     LeagueService
         .getAllLeagues()
-        .then(leagues => res.render('leagues/list', { leagues }))
+        .then(data => {
+            console.log('Estoy aqui')
+            console.log(data)
+            res.render('leagues/leagues-list', { leagues: data.data.response })
+        })
         .catch(err => next(err))
 })
 
-router.get('/:id/details', (req, res, next) => {
+route.get('/:id/details', (req, res, next) => {
 
     const { id } = req.params
 
     LeagueService
         .getOneLeague(id)
-        .then(league => res.render('leagues/detail-league', league))
+        .then(league => {
+            res.render('leagues/detail-league', { league: league.data.response })
+        })
         .catch(err => next(err))
 })
 
-exports.module = router
+module.exports = route
