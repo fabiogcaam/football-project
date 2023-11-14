@@ -1,13 +1,13 @@
 <div class="container">
-    <h1>Lista de jugadores</h1>
+    <h1>Lista de Entrenadores</h1>
     <hr>
-    {{#each players}}
+    {{#each coachs}}
     <div class="row mt-5">
         <div class="col-4">
             <h5 class="card-title">{{name}}</h5>
         </div>
         <div class="col-4">
-            <a href="/players/{{id}}/details">Ver detalles</a>
+            <a href="/coachs/{{id}}/details">Ver detalles</a>
         </div>
     </div>
     {{/each}}
