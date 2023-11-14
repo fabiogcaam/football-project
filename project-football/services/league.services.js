@@ -1,5 +1,6 @@
 const axios = require('axios')
 const FOOTBALL_KEY = proceess.env.FOOTBALL_KEY
+
 class LeagueService {
 
     constructor() {
@@ -9,7 +10,7 @@ class LeagueService {
         })
     }
 
-    getAllLeague() {
+    getAllLeagues() {
         return this.axiosApp.get('/v3/leagues',
             {
                 headers: {
@@ -32,6 +33,6 @@ class LeagueService {
 }
 
 
-const LeagueService = new LeagueService()
+const leagueService = new LeagueService()
 
-module.exports = LeagueService
+module.exports = leagueService

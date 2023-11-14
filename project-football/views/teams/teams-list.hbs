@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Lista de Equipos</h1>
+    <hr>
+    {{#each leagues}}
+    <div class="row mt-5">
+        <div class="col-4">
+            <h5 class="card-title">{{name}}</h5>
+        </div>
+        <div class="col-4">
+            <a href="/teams/{{id}}/details">Ver detalles</a>
+        </div>
+        <div class="col-4">
+            <a href="/teams/{{id}}/players">Ver Jugadores</a>
+        </div>
+    </div>
+    {{/each}}
+</div>

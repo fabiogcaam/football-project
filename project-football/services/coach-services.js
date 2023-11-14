@@ -1,5 +1,6 @@
 const axios = require('axios')
 const FOOTBALL_KEY = proceess.env.FOOTBALL_KEY
+
 class CoachService {
 
     constructor() {
@@ -8,8 +9,9 @@ class CoachService {
             baseURL: 'https://api-football-v1.p.rapidapi.com'
         })
     }
-    getAllLeague() {
-        return this.axiosApp.get('/v3/coachs',
+
+    getByTeam(teamId) {
+        return this.axiosApp.get(`/v3/coachs/${teamId}`,
             {
                 headers: {
                     'X-rapidAPI-key': FOOTBALL_KEY,
@@ -17,7 +19,8 @@ class CoachService {
                 }
             })
     }
-    getOneLeague(coachs_id) {
+
+    getCoachById(coachs_id) {
         return this.axiosApp.get(`/v3/coachs/${coachs_id}`,
             {
                 headers: {
@@ -29,6 +32,6 @@ class CoachService {
 }
 
 
-const CoachService = new CoachService()
+const coachService = new CoachService()
 
-module.exports = CoachService
+module.exports = coachService

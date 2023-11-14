@@ -4,12 +4,12 @@ class PlayerService {
 
     constructor() {
         this.axiosApp = axios.create({
-            baseURL: 'https://api-football-v1.p.rapidapi.com/v3/'
+            baseURL: 'https://api-football-v1.p.rapidapi.com'
         })
     }
 
-    getAllPlayersByTeam() {
-        return this.axiosApp('/players/squads', {
+    getAllPlayersByTeam(teamId) {
+        return this.axiosApp(`/v3/players/squads/${teamId}`, {
             headers: {
                 'X-rapidAPI-key': FOOTBALL_KEY,
                 'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
@@ -17,8 +17,8 @@ class PlayerService {
         })
     }
 
-    getPlayerByIdAndSeason(playerId, playerSeason) {
-        return this.axiosApp('/players',
+    getPlayerByIdAndName(playerId, playerName) {
+        return this.axiosApp(`/v3/players/${playerId}/${playerName}`,
             {
                 headers: {
                     'X-rapidAPI-key': FOOTBALL_KEY,
