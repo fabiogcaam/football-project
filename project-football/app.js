@@ -34,6 +34,14 @@ app.use("/users", authRoutes)
 const leaguesRoutes = require("./routes/leagues.routes")
 app.use("/leagues", leaguesRoutes)
 
+const teamsRoutes = require("./routes/teams.routes")
+app.use("/teams", teamsRoutes)
+
+const playersRoutes = require("./routes/players.routes")
+app.use("/players", playersRoutes)
+
+
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

@@ -1,5 +1,6 @@
 const axios = require('axios')
-const FOOTBALL_KEY = proceess.env.FOOTBALL_KEY
+const FOOTBALL_KEY = process.env.FOOTBALL_KEY
+
 class TeamService {
 
     constructor() {
@@ -19,11 +20,14 @@ class TeamService {
     }
 
     getTeamById(teamId) {
-        return this.axiosApp(`/v3/teams/${teamId}`,
+        return this.axiosApp(`/v3/teams`,
             {
                 headers: {
                     'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                },
+                params: {
+                    id: teamId
                 }
             })
     }
