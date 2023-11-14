@@ -12,7 +12,7 @@ class StadiumService {
         return this.axiosApp(`/v3/venues/${countryName}`,
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -22,7 +22,7 @@ class StadiumService {
         return this.axiosApp(`/v3/venues/${stadiumId}`,
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -30,6 +30,6 @@ class StadiumService {
 
 }
 
-const StadiumService = new StadiumService()
+const stadiumService = new StadiumService()
 
-module.exports = StadiumService
+module.exports = stadiumService

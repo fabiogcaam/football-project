@@ -5,7 +5,7 @@ router.get('/', (req, res, next) => {
 
     LeagueService
         .getAllLeagues()
-        .then(leagues => res.render('leagues/list', leagues))
+        .then(leagues => res.render('leagues/list', { leagues }))
         .catch(err => next(err))
 })
 

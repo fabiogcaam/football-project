@@ -14,7 +14,7 @@ class LeagueService {
         return this.axiosApp.get('/v3/leagues',
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -24,7 +24,7 @@ class LeagueService {
         return this.axiosApp.get(`/v3/leagues/${league_id}`,
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })

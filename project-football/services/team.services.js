@@ -12,7 +12,7 @@ class TeamService {
         return this.axiosApp(`/v2/teams/league/${leagueId}`,
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -22,7 +22,7 @@ class TeamService {
         return this.axiosApp(`/v3/teams/${teamId}`,
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -30,6 +30,6 @@ class TeamService {
 
 }
 
-const TeamService = new TeamService()
+const teamService = new TeamService()
 
-module.exports = TeamService
+module.exports = teamService

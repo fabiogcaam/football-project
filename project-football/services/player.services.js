@@ -11,7 +11,7 @@ class PlayerService {
     getAllPlayersByTeam(teamId) {
         return this.axiosApp(`/v3/players/squads/${teamId}`, {
             headers: {
-                'X-rapidAPI-key': FOOTBALL_KEY,
+                'X-RapidAPI-key': FOOTBALL_KEY,
                 'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
             }
         })
@@ -21,7 +21,7 @@ class PlayerService {
         return this.axiosApp(`/v3/players/${playerId}/${playerName}`,
             {
                 headers: {
-                    'X-rapidAPI-key': FOOTBALL_KEY,
+                    'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                 }
             })
@@ -29,6 +29,6 @@ class PlayerService {
 
 }
 
-const PlayerService = new PlayerService()
+const playerService = new PlayerService()
 
-module.exports = PlayerService
+module.exports = playerService
