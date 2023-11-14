@@ -1,14 +1,14 @@
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
-// const { isLoggedOut } = require('../middleware/guard-route')
+const { isLoggedOut } = require('../middleware/guard-route')
 const saltRounds = 10
 
 
 
-router.get('/signup', //isLoggedOut,
+router.get('/signup', isLoggedOut,
     (req, res, next) => { res.render('auth/signup') })
-router.post('/signup', //isLoggedOut,
+router.post('/signup', isLoggedOut,
     (req, res, next) => {
 
 
@@ -26,8 +26,9 @@ router.post('/signup', //isLoggedOut,
             .genSalt(saltRounds)
             .then(salt => bcrypt.hash(password, salt))
             .then(hashedPassword => User.create({ email, username, avatar, description, password: hashedPassword }))
-            .then(() => {
-                res.redirect('/users/login')
+            .then(createdUser => {
+
+                res.redirect('/')
             })
             .catch(error => next(error))
 
@@ -35,8 +36,8 @@ router.post('/signup', //isLoggedOut,
     })
 
 
-router.get('/login', (req, res, next) => res.render('auth/login'))
-router.post('/login', (req, res, next) => {
+router.get('/login', isLoggedOut, (req, res, next) => res.render('auth/login'))
+router.post('/login', isLoggedOut, (req, res, next) => {
 
     const { email, password } = req.body
 
@@ -50,7 +51,6 @@ router.post('/login', (req, res, next) => {
                 res.render('auth/login', { errorMessage: 'La contraseña es incorrecta' })
                 return
             } else {
-                console.log('-------------------------------------------')
                 req.session.currentUser = user
                 console.log('SESiIÓN INICIADA ->', req.session)
                 res.redirect('/')
@@ -61,7 +61,7 @@ router.post('/login', (req, res, next) => {
 
 
 router.post('/logout', (req, res, next) => {
-    req.session.destroy(() => res.redirect('/login'))
+    req.session.destroy(() => res.redirect('/'))
 })
 
 module.exports = router
