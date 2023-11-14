@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <h1>Detalle de {{name}}</h1>
+        <div class="col-4">
+            <figure>
+                <img src="{{photo}}" alt="{{name}}">
+            </figure>
+        </div>
+        <div class="col-8">
+            <h3>{{name}}</h3>
+            <p> Su nacionalidad es {{nationality}}</p>
+            <div>
+                <p>se llama {{firstname}}. Pesa {{weight}} y mide {{height}}</p>
+                <a href="/players/{{venue.id}}" class="btn btn-primary">Ver Detalle de Estadio</a>
+            </div>
+            <a href="/teams" class="btn btn-dark">Volver a Equipos</a>
+        </div>
+    </div>
+</div>

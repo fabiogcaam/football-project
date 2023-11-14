@@ -1,5 +1,5 @@
 const axios = require('axios')
-const FOOTBALL_KEY = proceess.env.FOOTBALL_KEY
+const FOOTBALL_KEY = process.env.FOOTBALL_KEY
 class TeamService {
 
     constructor() {
