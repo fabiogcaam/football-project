@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
-//const { isLoggedOut } = require('../middleware/guard-route')
+// const { isLoggedOut } = require('../middleware/guard-route')
 const saltRounds = 10
 
 
@@ -51,7 +51,9 @@ router.post('/login', (req, res, next) => {
                 res.render('auth/login', { errorMessage: 'La contraseña es incorrecta' })
                 return
             } else {
+                console.log('-------------------------------------------')
                 req.session.currentUser = user
+                console.log('SESiIÓN INICIADA ->', req.session)
                 res.redirect('/')
             }
         })
