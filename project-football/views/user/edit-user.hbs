@@ -1,0 +1,45 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <h1>Editar</h1>
+        <hr>
+
+        <form action="/user/{{user._id}}/edit" method="post">
+
+            <div class="mb-4">
+                <label for="usernameInput" class="form-label">Username</label>
+                <input type="text" class="form-control" id="usernameInput" name="username" value="{{user.username}}">
+            </div>
+
+            <div class="mb-4">
+                <label for="emailInput" class="form-label">Email</label>
+                <input type="text" class="form-control" id="emailInput" name="email" value="{{user.email}}">
+            </div>
+
+            <div class="mb-4">
+                <label for="avatarlInput" class="form-label">Avatar</label>
+                <input type="file" class="form-control" id="avatarInput" name="avatar" value="{{user.avatar}}">
+                <input type="file" hidden>
+
+                <div class="mb-4">
+                    <label for="descriptionInput" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descriptionInput" rows="3"
+                        name="description">{{user.description}}</textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">guardar</button>
+                </div>
+
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
+        </form>
+
+
+    </div>
+
+</div>
