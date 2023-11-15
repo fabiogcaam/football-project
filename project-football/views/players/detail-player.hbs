@@ -2,8 +2,8 @@
     <div class="row mt-5">
         <h1>Detalle de {{data.player.name}}</h1>
         <hr>
-        <div class="col-4">
-            <figure>
+        <div class="col-4 mt-5">
+            <figure class="player">
                 <img src="{{data.player.photo}}" alt="{{data.player.name}}">
             </figure>
         </div>
@@ -35,7 +35,16 @@
                         las cuales {{data.statistics.[0].cards.yellowred}} fueron por doble amarilla</p>
                 </div>
             </div>
-            <a href="/leagues" class="btn btn-dark">Volver a Ligas</a>
+            <div class="row mt-5">
+                <div class="col-6">
+                    <form action="" method="POST">
+                        <input type="submit" class="btn btn-primary" value="Añadir a Mi Equipo">
+                    </form>
+                </div>
+                <div class="col-6">
+                    <a href="/teams/{{data.statistics.[0].team.id}}/details" class="btn btn-dark">Ir a Equipo</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

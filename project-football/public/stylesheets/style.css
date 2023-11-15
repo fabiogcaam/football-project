@@ -9,3 +9,13 @@ a {
 h1 {
   color: 15px;
 }
+
+figure img {
+  height: 300px;
+  background-size: cover;
+}
+
+.player img {
+  height: 350px;
+  background-size: cover;
+}

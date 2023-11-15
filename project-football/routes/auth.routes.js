@@ -2,15 +2,16 @@ const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 const { isLoggedOut } = require('../middleware/guard-route')
+const uploaderMiddleware = require('../middleware/uploader.middleware')
 const saltRounds = 10
 
-router.get('/signup', isLoggedOut,
+router.get('/signup', isLoggedOut, uploaderMiddleware.single('avatar'),
     (req, res, next) => { res.render('auth/signup') })
 router.post('/signup', isLoggedOut,
     (req, res, next) => {
 
-
-        let { email, password, username, avatar, description } = req.body
+        const { path: avatar } = req.file
+        let { email, password, username, description } = req.body
 
         if (avatar.length === 0) {
             avatar = 'https://i.stack.imgur.com/l60Hf.png'

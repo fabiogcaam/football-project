@@ -1,20 +1,30 @@
 <div class="container">
-    <div class="row">
+    <div class="row mt-5">
         <h1>Detalle de la liga {{league.[0].league.name}}</h1>
-        <div class="col-4">
+        <hr>
+        <div class="col-4 mt-3">
             <figure>
                 <img src="{{league.[0].league.logo}}" alt="{{league.[0].league.name}}">
             </figure>
         </div>
-        <div class="col-8">
-            <h3>La liga {{league.[0].league.name}} es de tipo: {{league.[0].league.type}}</h3>
+        <div class="col-8 mt-5">
+            <h3>La liga <strong>{{league.[0].league.name}}</strong> es de tipo
+                <strong>{{league.[0].league.type}}</strong>
+            </h3>
             {{!-- Esto hay que probarlo, que no estoy seguro de que funcione así el el season.[0].year y el siguiente
             --}}
             <p>Que se organiza en {{league.[0].country.name}} y lleva un total de {{league.[0].seasons.length}}
                 jugandose: desde
-                {{league.[0].seasons.[0].year}} hasta {{league.[0].seasons.[seasons.length-1].year}}</p>
-            <a href="/leagues" class="btn btn-primary">Volver a ligas</a>
-            <a href="/teams/league/{{league.[0].league.id}}" class="btn btn-dark">Ver equipos</a>
+                {{league.[0].seasons.[0].year}}</p>
+            <div class="row justify-content-around mt-4">
+                <div class="col-6">
+                    <a href="/leagues" class="btn btn-primary">Volver a ligas</a>
+                </div>
+                <div class="col-6">
+                    <a href="/teams/league/{{league.[0].league.id}}" class="btn btn-dark">Ver equipos</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
