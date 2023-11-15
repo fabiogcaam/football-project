@@ -7,7 +7,6 @@ route.get('/', isLoggedIn, (req, res, next) => {
     LeagueService
         .getAllLeagues()
         .then(data => {
-            console.log('############## GET ALL LEAGUES ##############')
             console.log(data.data.response)
             res.render('leagues/leagues-list', { leagues: data.data.response })
         })

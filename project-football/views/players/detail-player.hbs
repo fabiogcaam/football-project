@@ -1,16 +1,39 @@
-<div class="container">
-    <div class="row">
-        <h1>Detalle de {{player.name}}</h1>
+<div class="container ">
+    <div class="row mt-5">
+        <h1>Detalle de {{data.player.name}}</h1>
+        <hr>
         <div class="col-4">
             <figure>
-                <img src="{{player.photo}}" alt="{{player.name}}">
+                <img src="{{data.player.photo}}" alt="{{data.player.name}}">
             </figure>
         </div>
         <div class="col-8">
-            <h3>{{name}}</h3>
-            <p> Proviene de {{player.nationality}}</p>
-            <div>
-                <p>se llama {{player.name}}, pesa {{player.weight}} y mide {{player.height}}</p>
+            <h2>{{data.player.firstname}} {{data.player.lastname}}</h2>
+            <p> Proviene de {{data.player.nationality}}</p>
+            <div class="mt-3">
+                <p>se llama {{data.player.name}}, pesa {{data.player.weight}} y mide {{data.player.height}}</p>
+            </div>
+            <hr>
+            <div class="mt-3">
+                <h3>Estadisticas en el año {{data.statistics.[0].league.season}}</h3>
+                <div class="mt-3">
+                    <h5>Posicion: {{data.statistics.[0].games.position}}</h5>
+                    <p>Ha jugado {{data.statistics.[0].games.appearences}} partidos de los cuales ha sido titular en
+                        {{data.statistics.[0].games.lineups}}</p>
+                    <h5>Goles:</h5>
+                    <p>Ha metido {{data.statistics.[0].goals.total}} y ha dado {{data.statistics.[0].goals.assists}}
+                        asistencias
+                    </p>
+                    <h5>Tiros:</h5>
+                    <p>Ha realizado {{data.statistics.[0].shots.total}}, de los cuales {{data.statistics.[0].shots.on}}
+                        fueron a
+                        porteria
+                    </p>
+                    <h5>Tarjetas:</h5>
+                    <p>Ha recibido {{data.statistics.[0].cards.yellow}} amarillas y {{data.statistics.[0].cards.red}}
+                        rojas, de
+                        las cuales {{data.statistics.[0].cards.yellowred}} fueron por doble amarilla</p>
+                </div>
             </div>
             <a href="/leagues" class="btn btn-dark">Volver a Ligas</a>
         </div>

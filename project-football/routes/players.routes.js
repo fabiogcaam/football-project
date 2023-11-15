@@ -23,7 +23,7 @@ route.get('/:playerId', (req, res, next) => {
         .getPlayerById(playerId)
         .then(player => {
             console.log(player.data.response)
-            res.render('players/detail-player', { player: player.data.response[0].player })
+            res.render('players/detail-player', { data: player.data.response[0] })
         })
 })
 

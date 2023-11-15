@@ -25,9 +25,21 @@ const checkRole = (...admittedRoles) => (req, res, next) => {
     }
 }
 
+const isOwner = (req, res, next) => {
+    const { id } = req.params
+    const { role } = req.session.currentUser
+
+    if (id == req.session.currentUser._id || role == "ADMIN") {
+        next()
+    } else {
+        res.render('/')
+    }
+}
+
 
 module.exports = {
     isLoggedIn,
     isLoggedOut,
-    checkRole
+    checkRole,
+    isOwner
 }
