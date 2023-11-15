@@ -10,25 +10,19 @@ class CoachService {
         })
     }
 
-    getByTeam(teamId) {
-        return this.axiosApp.get(`/v3/coachs/${teamId}`,
+    getCoachByTeam(teamId) {
+        return this.axiosApp.get(`/v3/coachs`,
             {
                 headers: {
                     'X-RapidAPI-key': FOOTBALL_KEY,
                     'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+                },
+                params: {
+                    id: teamId
                 }
             })
     }
 
-    getCoachById(coachs_id) {
-        return this.axiosApp.get(`/v3/coachs/${coachs_id}`,
-            {
-                headers: {
-                    'X-RapidAPI-key': FOOTBALL_KEY,
-                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-                }
-            })
-    }
 }
 
 
