@@ -1,15 +1,8 @@
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
-const { isLoggedOut, isLoggedIn } = require('../middleware/guard-route')
+const { isLoggedOut } = require('../middleware/guard-route')
 const saltRounds = 10
-
-router.get("/perfil", isLoggedIn, (req, res) => {
-    console.log('datosuser ', { user: req.session.currentUser })
-    res.render("user/profile", { user: req.session.currentUser })
-
-})
-
 
 router.get('/signup', isLoggedOut,
     (req, res, next) => { res.render('auth/signup') })
