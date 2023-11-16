@@ -4,15 +4,16 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true
+      required: [true, 'El cuerpo del mensaje es obligatorio']
     },
     email: {
       type: String,
       unique: true,
-      required: true
+      required: [true, 'El cuerpo del mensaje es obligatorio']
     },
     password: {
-      type: String
+      type: String,
+      required: [true, 'El cuerpo del mensaje es obligatorio']
     },
     avatar: {
       type: String,

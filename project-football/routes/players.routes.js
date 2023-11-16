@@ -1,30 +1,38 @@
-const route = require('express').Router()
+const router = require('express').Router()
 const PlayerService = require('../services/player.services')
 const { isLoggedIn } = require('../middleware/guard-route')
-
-route.get('/:teamId/team', isLoggedIn, (req, res, next) => {
+const Comment = require('../models/Comment.model')
+router.get('/:teamId/team', isLoggedIn, (req, res, next) => {
 
     const { teamId } = req.params
 
     PlayerService
         .getAllPlayersByTeam(teamId)
-        .then(data => {
-            console.log(data.data.response)
-            res.render('players/players-list', { data: data.data.response[0].players })
+        .then(({ data }) => {
+            res.render('players/players-list', { data: data.response[0].players })
         })
         .catch(err => next(err))
 })
 
-route.get('/:playerId', isLoggedIn, (req, res, next) => {
-
+router.get('/:playerId', isLoggedIn, (req, res, next) => {
+    console.log('Entra en esta')
     const { playerId } = req.params
+    const { userId } = req.session.currentUser
 
-    PlayerService
-        .getPlayerById(playerId)
-        .then(player => {
-            console.log(player.data.response)
-            res.render('players/detail-player', { data: player.data.response[0] })
+    const promises = [
+        PlayerService.getPlayerById(playerId),
+        Comment.find({ idPlayer: playerId }).populate('user')
+    ]
+
+    Promise.all(promises)
+        .then(response => {
+
+            const player = response[0].data.response[0]
+            const comments = response[1]
+
+            res.render('players/detail-player', { player, comments })
+
         })
+        .catch(err => next(err))
 })
-
-module.exports = route
+module.exports = router

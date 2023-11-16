@@ -5,16 +5,16 @@ class StadiumService {
 
     constructor() {
         this.axiosApp = axios.create({
-            baseURL: 'https://api-football-v1.p.rapidapi.com'
+            baseURL: 'https://api-football-v1.p.rapidapi.com',
+            headers: {
+                'X-RapidAPI-key': FOOTBALL_KEY,
+                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            }
         })
     }
 
     getStadiumById(stadiumId) {
         return this.axiosApp(`/v3/venues`, {
-            headers: {
-                'X-RapidAPI-key': FOOTBALL_KEY,
-                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-            },
             params: {
                 id: stadiumId
             }

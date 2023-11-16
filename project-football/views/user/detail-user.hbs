@@ -22,15 +22,12 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <a href="/user/{{user._id}}/edit" class="btn btn-warning ">Editar</a>
+                    <a href="/user/{{_id}}/edit" class="btn btn-warning ">Editar</a>
                 </div>
                 <div class="col-md-4">
-                    <form action="/{{user._id}}" method="post">
+                    <form action="/user/{{_id}}" method="post">
                         <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
-                </div>
-                <div class="col-md-4">
-                    <a href="/" class="btn btn-primary">Ver Equipos</a>
                 </div>
             </div>
         </div>

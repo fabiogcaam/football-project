@@ -2,7 +2,7 @@ const isLoggedIn = (req, res, next) => {
     if (req.session.currentUser) {
         next()
     } else {
-        res.redirect('/users/login')
+        res.redirect('/auth/login')
     }
 }
 

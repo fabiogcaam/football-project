@@ -1,20 +1,21 @@
 const axios = require('axios')
 const FOOTBALL_KEY = process.env.FOOTBALL_KEY
 
+// TODO: INCLUIR HEADERS EN APP
 class PlayerService {
 
     constructor() {
         this.axiosApp = axios.create({
-            baseURL: 'https://api-football-v1.p.rapidapi.com'
+            baseURL: 'https://api-football-v1.p.rapidapi.com',
+            headers: {
+                'X-RapidAPI-key': FOOTBALL_KEY,
+                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            }
         })
     }
 
     getAllPlayersByTeam(teamId) {
         return this.axiosApp(`/v3/players/squads`, {
-            headers: {
-                'X-RapidAPI-key': FOOTBALL_KEY,
-                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-            },
             params: {
                 team: teamId
             }
@@ -23,10 +24,6 @@ class PlayerService {
 
     getPlayerById(playerId) {
         return this.axiosApp(`/v3/players`, {
-            headers: {
-                'X-RapidAPI-key': FOOTBALL_KEY,
-                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-            },
             params: {
                 id: playerId,
                 season: '2020'

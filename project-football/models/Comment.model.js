@@ -1,16 +1,16 @@
 const { Schema, model } = require('mongoose')
 
 const commentSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
     body: {
         type: String,
-        required: true
+        required: [true, 'El cuerpo del mensaje es obligatorio']
     },
     user: {
         type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    idPlayer: {
+        type: Number,
         ref: 'User'
     }
 }, {

@@ -1,50 +1,99 @@
 <div class="container ">
     <div class="row mt-5">
-        <h1>Detalle de {{data.player.name}}</h1>
+        <h1>Detalle de {{player.player.name}}</h1>
         <hr>
-        <div class="col-4 mt-5">
+        <div class="col-6 mt-5">
             <figure class="player">
-                <img src="{{data.player.photo}}" alt="{{data.player.name}}">
+                <img src="{{player.player.photo}}" alt="{{player.player.name}}">
             </figure>
         </div>
-        <div class="col-8">
-            <h2>{{data.player.firstname}} {{data.player.lastname}}</h2>
-            <p> Proviene de {{data.player.nationality}} y tiene {{data.player.age}} años</p>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>{{player.player.firstname}} {{player.player.lastname}}</h2>
+            <p> Proviene de {{player.player.nationality}} y tiene {{player.player.age}} años</p>
             <div class="mt-3">
-                <p>se llama {{data.player.name}}, pesa {{data.player.weight}} y mide {{data.player.height}}</p>
+                <p>se llama {{player.player.name}}, pesa {{player.player.weight}} y mide {{player.player.height}}</p>
             </div>
             <hr>
             <div class="mt-3">
-                <h3>Estadisticas en el año {{data.statistics.[0].league.season}}</h3>
+                <h3>Estadisticas en el año {{player.statistics.[0].league.season}}</h3>
                 <div class="mt-3">
-                    <h5>Posicion: {{data.statistics.[0].games.position}}</h5>
-                    <p>Ha jugado {{data.statistics.[0].games.appearences}} partidos de los cuales ha sido titular en
-                        {{data.statistics.[0].games.lineups}}</p>
+                    <h5>Posicion: {{player.statistics.[0].games.position}}</h5>
+                    <p>Ha jugado {{player.statistics.[0].games.appearences}} partidos de los cuales ha sido titular en
+                        {{player.statistics.[0].games.lineups}}</p>
                     <h5>Goles:</h5>
-                    <p>Ha metido {{data.statistics.[0].goals.total}} y ha dado {{data.statistics.[0].goals.assists}}
+                    <p>Ha metido {{player.statistics.[0].goals.total}} y ha dado {{player.statistics.[0].goals.assists}}
                         asistencias
                     </p>
                     <h5>Tiros:</h5>
-                    <p>Ha realizado {{data.statistics.[0].shots.total}}, de los cuales {{data.statistics.[0].shots.on}}
+                    <p>Ha realizado {{player.statistics.[0].shots.total}}, de los cuales
+                        {{player.statistics.[0].shots.on}}
                         fueron a
                         porteria
                     </p>
                     <h5>Tarjetas:</h5>
-                    <p>Ha recibido {{data.statistics.[0].cards.yellow}} amarillas y {{data.statistics.[0].cards.red}}
+                    <p>Ha recibido {{player.statistics.[0].cards.yellow}} amarillas y
+                        {{player.statistics.[0].cards.red}}
                         rojas, de
-                        las cuales {{data.statistics.[0].cards.yellowred}} fueron por doble amarilla</p>
+                        las cuales {{player.statistics.[0].cards.yellowred}} fueron por doble amarilla</p>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-6">
-                    <form action="/user/addPlayer/{{data.player.id}}" method="POST">
+                    <form action="/user/addPlayer/{{player.player.id}}" method="POST">
                         <input type="submit" class="btn btn-primary" value="Añadir a Mi Equipo">
                     </form>
                 </div>
                 <div class="col-6">
-                    <a href="/teams/{{data.statistics.[0].team.id}}/details" class="btn btn-dark">Ir a Equipo</a>
+                    <a href="/teams/{{player.statistics.[0].team.id}}/details" class="btn btn-dark">Ir a Equipo</a>
                 </div>
             </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                {{#each comments}}
+                <div>
+                    <h1>{{this.body}}</h1>
+                    <p>{{this.user.username}}</p>
+                    <form action="/{{this._id}}/delete-comment" method="POST">
+                        <input type="submit" class="btn btn-danger">
+                    </form>
+                </div>
+                {{/each}}
+            </div>
+            {{#if player.player.id}}
+            <div class="row mx-auto">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addComment"
+                    data-bs-whatever="@Comment">Añade Comentario</button>
+                <div class="modal fade" id="addComment" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">New</h1>
+                                <input type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="/players/{{player.player.id}}" method="POST">
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Message:</label>
+                                        <textarea class="form-control" id="message-text" name="body"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <input type="submit" class="btn btn-primary" value="Send Comment"></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
         </div>
     </div>
 </div>

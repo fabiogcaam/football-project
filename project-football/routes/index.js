@@ -4,7 +4,7 @@ module.exports = app => {
     app.use("/", indexRoutes)
 
     const authRoutes = require("./auth.routes")
-    app.use("/users", authRoutes)
+    app.use("/auth", authRoutes)
 
     const leaguesRoutes = require("./leagues.routes")
     app.use("/leagues", leaguesRoutes)
@@ -23,5 +23,8 @@ module.exports = app => {
 
     const userRoutes = require("./user.routes")
     app.use("/user", userRoutes)
+
+    const commentsRoutes = require("./comments.routes")
+    app.use("/", commentsRoutes)
 
 }

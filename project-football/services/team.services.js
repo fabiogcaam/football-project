@@ -5,12 +5,7 @@ class TeamService {
 
     constructor() {
         this.axiosApp = axios.create({
-            baseURL: 'https://api-football-v1.p.rapidapi.com'
-        })
-    }
-
-    getAllTeamsByLeague(leagueId) {
-        return this.axiosApp(`/v2/teams/league/${leagueId}`, {
+            baseURL: 'https://api-football-v1.p.rapidapi.com',
             headers: {
                 'X-RapidAPI-key': FOOTBALL_KEY,
                 'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
@@ -18,12 +13,12 @@ class TeamService {
         })
     }
 
+    getAllTeamsByLeague(leagueId) {
+        return this.axiosApp(`/v2/teams/league/${leagueId}`)
+    }
+
     getTeamById(teamId) {
         return this.axiosApp(`/v3/teams`, {
-            headers: {
-                'X-RapidAPI-key': FOOTBALL_KEY,
-                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-            },
             params: {
                 id: teamId
             }
