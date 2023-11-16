@@ -1,30 +1,57 @@
 const router = require("express").Router()
-const { isLoggedIn, checkRole } = require('../middleware/guard-route')
+const { isLoggedIn, checkRole, isOwner } = require('../middleware/guard-route')
 const User = require('../models/User.model')
+
 
 
 
 router.get('/profile', isLoggedIn, (req, res) => {
 
-    res.render('user/detail-user', { user: req.session.currentUser })
+    res.render('user/profile', { user: req.session.currentUser })
 
 })
-// router.get("/admin", isLoggedIn, checkRole('ADMIN'), (req, res) => {
-//     res.render("user/   ", { user: req.session.currentUser })
-// })
+
+router.get('/:id/detail', isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
+
+    const { id } = req.params
+
+    User
+        .findById(id)
+        .then(user => {
+            res.render('user/detail-user', user)
+        })
+        .catch(err => next(err))
+})
+
+
+router.get("/list", isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
+
+    User
+        .find()
+        .then(users => {
+            console.log("entramos aquí")
+            res.render('user/user-list',
+                {
+                    users: users,
+                    isAdmin: req.session.currentUser.role === 'ADMIN'
+                })
+        })
+        .catch(err => next(err))
+})
 
 
 router.post('/addPlayer/:idPlayer', isLoggedIn, (req, res, next) => {
 
-    const { idPlayer } = req.params
+    const { idPlayer } = req.body
 
     const isFavourite = []
 
     User
-        .findById(idPlayer)
-        .then(player => {
+        .findById(req.session.currentUser.id)
+        .then(
+            isFavourite.push(idPlayer)
+        ).catch(err => next(err))
 
-        })
 })
 
 

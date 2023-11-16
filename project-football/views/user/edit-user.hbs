@@ -5,7 +5,7 @@
         <h1>Editar</h1>
         <hr>
 
-        <form action="/user/{{user._id}}/edit" method="post">
+        <form action="/user/{{user._id}}/edit" method="post" enctype="multipart/form-data">
 
             <div class="mb-4">
                 <label for="usernameInput" class="form-label">Username</label>
@@ -20,7 +20,8 @@
             <div class="mb-4">
                 <label for="avatarlInput" class="form-label">Avatar</label>
                 <input type="file" class="form-control" id="avatarInput" name="avatar" value="{{user.avatar}}">
-                <input type="file" hidden>
+                <input type="text" name="existingImage" hidden value="{{avatar}}">
+                </label>
 
                 <div class="mb-4">
                     <label for="descriptionInput" class="form-label">Descripción</label>

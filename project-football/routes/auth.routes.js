@@ -5,17 +5,18 @@ const { isLoggedOut } = require('../middleware/guard-route')
 const uploaderMiddleware = require('../middleware/uploader.middleware')
 const saltRounds = 10
 
-router.get('/signup', isLoggedOut, uploaderMiddleware.single('avatar'),
+router.get('/signup', isLoggedOut,
     (req, res, next) => { res.render('auth/signup') })
-router.post('/signup', isLoggedOut,
+
+router.post('/signup', isLoggedOut, uploaderMiddleware.single('avatar'),
     (req, res, next) => {
 
-        const { path: avatar } = req.file
+        const { avatar } = req.file.path
         let { email, password, username, description } = req.body
 
-        if (avatar.length === 0) {
-            avatar = 'https://i.stack.imgur.com/l60Hf.png'
-        }
+        // if (avatar.length === 0) {
+        //     avatar = 'https://i.stack.imgur.com/l60Hf.png'
+        // }
 
         if (description.length === 0) {
             description = 'No existe descripción.'

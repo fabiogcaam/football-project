@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model, SchemaType } = require('mongoose')
 
 const userSchema = new Schema(
   {
@@ -28,8 +28,13 @@ const userSchema = new Schema(
       default: 'USER'
     },
     isFavourite: [{
-      type: String
+      type: Number
     }]
+
+    // team: {
+    //   type: SchemaType.Types.ObjectId,
+    //   ref: 'Team'
+    // }
   },
   {
     timestamps: true
