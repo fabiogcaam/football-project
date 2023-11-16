@@ -7,6 +7,7 @@ const User = require('../models/User.model')
 
 router.get('/profile', isLoggedIn, (req, res) => {
 
+
     res.render('user/profile', { user: req.session.currentUser })
 
 })
@@ -37,7 +38,15 @@ router.get("/list", isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
                 })
         })
         .catch(err => next(err))
+
+    res.render('user/detail-user', {
+        user: req.session.currentUser,
+        isAdminOrOwner: req.session.currentUser.role,
+        isAdmin: req.session.currentUser.role === 'ADMIN'
+    })
+
 })
+
 
 
 router.post('/addPlayer/:idPlayer', isLoggedIn, (req, res, next) => {
@@ -62,7 +71,7 @@ router.get('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
 
     User
         .findById(id)
-        .then(user => res.render('user/edit-user', user))
+        .then(user => res.render('user/edit-user', { user: req.session.currentUser }))
         .catch(err => next(err))
 
 
@@ -70,11 +79,27 @@ router.get('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
 
 router.post('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
     const { username, email, avatar, description } = req.body
+    req.session.currentUser.username = username
+    req.session.currentUser.email = email
+    req.session.currentUser.avatar = avatar
+    req.session.currentUser.description = description
     const { id } = req.params
 
     User
         .findByIdAndUpdate(id, { username, email, avatar, description })
         .then(() => res.redirect(`/user/profile`))
+        .catch(err => console.log(err))
+})
+
+//Delete
+
+router.post('/:id', isLoggedIn, (req, res) => {
+
+    const { id } = req.params
+
+    User
+        .findByIdAndDelete(id)
+        .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
 
