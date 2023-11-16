@@ -2,11 +2,7 @@ const router = require("express").Router()
 const { isLoggedIn, checkRole, isOwner } = require('../middleware/guard-route')
 const User = require('../models/User.model')
 
-
-
-
 router.get('/profile', isLoggedIn, (req, res) => {
-
 
     res.render('user/profile', { user: req.session.currentUser })
 
@@ -24,7 +20,6 @@ router.get('/:id/detail', isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
         .catch(err => next(err))
 })
 
-
 router.get("/list", isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
 
     User
@@ -39,31 +34,21 @@ router.get("/list", isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
         })
         .catch(err => next(err))
 
-    res.render('user/detail-user', {
-        user: req.session.currentUser,
-        isAdminOrOwner: req.session.currentUser.role,
-        isAdmin: req.session.currentUser.role === 'ADMIN'
-    })
-
 })
-
-
 
 router.post('/addPlayer/:idPlayer', isLoggedIn, (req, res, next) => {
 
-    const { idPlayer } = req.body
-
-    const isFavourite = []
+    const { idPlayer } = req.params
 
     User
         .findById(req.session.currentUser.id)
-        .then(
+        .then(user => {
             isFavourite.push(idPlayer)
-        ).catch(err => next(err))
+            console.log(isFavourite)
+        })
+        .catch(err => next(err))
 
 })
-
-
 
 router.get('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
 
@@ -73,8 +58,6 @@ router.get('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
         .findById(id)
         .then(user => res.render('user/edit-user', { user: req.session.currentUser }))
         .catch(err => next(err))
-
-
 })
 
 router.post('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
@@ -91,8 +74,6 @@ router.post('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-//Delete
-
 router.post('/:id', isLoggedIn, (req, res) => {
 
     const { id } = req.params
@@ -102,6 +83,5 @@ router.post('/:id', isLoggedIn, (req, res) => {
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
-
 
 module.exports = router

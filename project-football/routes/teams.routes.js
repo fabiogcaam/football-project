@@ -1,8 +1,8 @@
 const route = require('express').Router()
 const TeamService = require('../services/team.services')
+const { isLoggedIn } = require('../middleware/guard-route')
 
-
-route.get('/league/:leagueId', (req, res, next) => {
+route.get('/league/:leagueId', isLoggedIn, (req, res, next) => {
 
     const { leagueId } = req.params
 
@@ -15,7 +15,7 @@ route.get('/league/:leagueId', (req, res, next) => {
         .catch(err => next(err))
 })
 
-route.get('/:teamId/details', (req, res, next) => {
+route.get('/:teamId/details', isLoggedIn, (req, res, next) => {
 
     const { teamId } = req.params
 

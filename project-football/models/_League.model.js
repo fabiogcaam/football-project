@@ -36,7 +36,7 @@ const leagueSchema = new Schema(
     {
         timestamps: true
     }
-);
+)
 
 
 module.exports = model('League', leagueSchema)

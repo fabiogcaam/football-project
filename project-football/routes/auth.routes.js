@@ -14,10 +14,6 @@ router.post('/signup', isLoggedOut, uploaderMiddleware.single('avatar'),
         const { avatar } = req.file.path
         let { email, password, username, description } = req.body
 
-        // if (avatar.length === 0) {
-        //     avatar = 'https://i.stack.imgur.com/l60Hf.png'
-        // }
-
         if (description.length === 0) {
             description = 'No existe descripción.'
         }
@@ -29,9 +25,7 @@ router.post('/signup', isLoggedOut, uploaderMiddleware.single('avatar'),
             .then(() => res.redirect('/'))
             .catch(error => next(error))
 
-
     })
-
 
 router.get('/login', isLoggedOut, (req, res, next) => {
     res.render('auth/login')
@@ -58,7 +52,6 @@ router.post('/login', isLoggedOut, (req, res, next) => {
         })
         .catch(error => next(error))
 })
-
 
 router.post('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/'))

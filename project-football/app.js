@@ -1,57 +1,19 @@
-// ℹ️ Gets access to environment variables/settings
-// https://www.npmjs.com/package/dotenv
-require("dotenv").config();
+require("dotenv").config()
+require("./db")
 
-// ℹ️ Connects to the database
-require("./db");
+const express = require("express")
+const app = express()
 
-// Handles http requests (express is node js framework)
-// https://www.npmjs.com/package/express
-const express = require("express");
-
-// Handles the handlebars
-// https://www.npmjs.com/package/hbs
-const hbs = require("hbs");
-
-const app = express();
-
-// ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
-require("./config/index")(app);
+require("./config/index")(app)
 require("./config/session.config")(app)
 
-// default value for title local
-const capitalize = require("./utils/capitalize");
-const projectName = "project-football";
+const capitalize = require("./utils/capitalize")
+const projectName = "project-football"
 
-app.locals.appTitle = `${capitalize(projectName)}`;
+app.locals.appTitle = `${capitalize(projectName)}`
 
-// 👇 Start handling routes here
-const indexRoutes = require("./routes/index.routes");
-app.use("/", indexRoutes);
+require('./routes')(app)
 
-const authRoutes = require("./routes/auth.routes")
-app.use("/users", authRoutes)
+require("./error-handling")(app)
 
-const leaguesRoutes = require("./routes/leagues.routes")
-app.use("/leagues", leaguesRoutes)
-
-const teamsRoutes = require("./routes/teams.routes")
-app.use("/teams", teamsRoutes)
-
-const playersRoutes = require("./routes/players.routes")
-app.use("/players", playersRoutes)
-
-const stadiumsRoutes = require("./routes/stadiums.routes")
-app.use("/stadium", stadiumsRoutes)
-
-const coachsRoutes = require("./routes/coachs.routes")
-app.use("/coach", coachsRoutes)
-
-const userRoutes = require("./routes/user.routes")
-app.use("/user", userRoutes)
-
-
-// ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-require("./error-handling")(app);
-
-module.exports = app;
+module.exports = app

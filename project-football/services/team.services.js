@@ -10,26 +10,24 @@ class TeamService {
     }
 
     getAllTeamsByLeague(leagueId) {
-        return this.axiosApp(`/v2/teams/league/${leagueId}`,
-            {
-                headers: {
-                    'X-RapidAPI-key': FOOTBALL_KEY,
-                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-                }
-            })
+        return this.axiosApp(`/v2/teams/league/${leagueId}`, {
+            headers: {
+                'X-RapidAPI-key': FOOTBALL_KEY,
+                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            }
+        })
     }
 
     getTeamById(teamId) {
-        return this.axiosApp(`/v3/teams`,
-            {
-                headers: {
-                    'X-RapidAPI-key': FOOTBALL_KEY,
-                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-                },
-                params: {
-                    id: teamId
-                }
-            })
+        return this.axiosApp(`/v3/teams`, {
+            headers: {
+                'X-RapidAPI-key': FOOTBALL_KEY,
+                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            },
+            params: {
+                id: teamId
+            }
+        })
     }
 
 }

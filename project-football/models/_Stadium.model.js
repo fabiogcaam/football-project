@@ -47,7 +47,7 @@ const stadiumSchema = new Schema(
     {
         timestamps: true
     }
-);
+)
 
 stadiumSchema.index({ location: '2dsphere' })
 

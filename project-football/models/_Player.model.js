@@ -105,7 +105,7 @@ const playerSchema = new Schema(
     {
         timestamps: true
     }
-);
+)
 
 
 module.exports = model('Player', playerSchema)

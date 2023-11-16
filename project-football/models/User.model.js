@@ -1,4 +1,4 @@
-const { Schema, model, SchemaType } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema(
   {
@@ -30,16 +30,15 @@ const userSchema = new Schema(
     isFavourite: [{
       type: Number
     }]
-
     // team: {
-    //   type: SchemaType.Types.ObjectId,
+    //   type: Schema.Types.ObjectId,
     //   ref: 'Team'
     // }
   },
   {
     timestamps: true
   }
-);
+)
 
 
 module.exports = model('User', userSchema)

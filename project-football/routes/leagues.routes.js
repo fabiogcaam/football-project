@@ -13,7 +13,7 @@ route.get('/', isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 })
 
-route.get('/:id/details', (req, res, next) => {
+route.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 

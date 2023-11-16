@@ -1,7 +1,6 @@
 const route = require('express').Router()
 const CoachService = require('../services/coach.services')
 
-
 route.get('/:teamId', (req, res, next) => {
 
     const { teamId } = req.params
@@ -14,7 +13,5 @@ route.get('/:teamId', (req, res, next) => {
         })
         .catch(err => next(err))
 })
-
-
 
 module.exports = route

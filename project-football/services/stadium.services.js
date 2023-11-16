@@ -1,5 +1,6 @@
 const axios = require('axios')
 const FOOTBALL_KEY = process.env.FOOTBALL_KEY
+
 class StadiumService {
 
     constructor() {
@@ -9,16 +10,15 @@ class StadiumService {
     }
 
     getStadiumById(stadiumId) {
-        return this.axiosApp(`/v3/venues`,
-            {
-                headers: {
-                    'X-RapidAPI-key': FOOTBALL_KEY,
-                    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-                },
-                params: {
-                    id: stadiumId,
-                }
-            })
+        return this.axiosApp(`/v3/venues`, {
+            headers: {
+                'X-RapidAPI-key': FOOTBALL_KEY,
+                'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            },
+            params: {
+                id: stadiumId
+            }
+        })
     }
 
 }

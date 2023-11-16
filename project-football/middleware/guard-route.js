@@ -36,7 +36,6 @@ const isOwner = (req, res, next) => {
     }
 }
 
-
 module.exports = {
     isLoggedIn,
     isLoggedOut,

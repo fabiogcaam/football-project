@@ -38,7 +38,7 @@ const coachSchema = new Schema(
     {
         timestamps: true
     }
-);
+)
 
 
 module.exports = model('Coach', coachSchema)

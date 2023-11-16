@@ -21,7 +21,6 @@ const teamSchema = new Schema(
     {
         timestamps: true
     }
-);
-
+)
 
 module.exports = model('Team', teamSchema)

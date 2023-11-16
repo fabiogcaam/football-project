@@ -7,64 +7,32 @@
                 <img src="{{avatar}}" alt="{{username}}">
             </figure>
         </div>
-
         <div class="col-7">
-            <h3>{{username}}</h3>
-            <h5>{{email}}</h5>
-            <p>{{description}}</p>
-
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Username</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.username}}</p>
-                    </div>
+            <div class="mb-3">
+                <h5>Nombre de Usuario:</h5>
+                <h3>{{username}}</h3>
+            </div>
+            <div class="mb-3">
+                <h5>Email</h5>
+                <h3>{{email}}</h3>
+            </div>
+            <div class="mb-3">
+                <h5>Descripción</h5>
+                <p>{{description}}</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/user/{{user._id}}/edit" class="btn btn-warning ">Editar</a>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Email</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.email}}</p>
-                    </div>
+                <div class="col-md-4">
+                    <form action="/{{user._id}}" method="post">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Avatar</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.avatar}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Descripcion</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p>{{user.description}}</p>
-                    </div>
-                </div>
-
-                {{#if isAdminOrOwner}}
-                <div class="row">
-                    <div class="col-md-4">
-                        <a href="/user/{{user._id}}/edit" class="btn btn-warning ">Editar</a>
-                    </div>
-                    {{#if isAdmin}}
-                    <div class="col-md-4">
-                        <form action="/{{user._id}}" method="post">
-                            <input type="submit" value="Delete" class="btn btn-danger">
-                        </form>
-                    </div>
-                    {{/if}}
-                </div>
-                {{/if}}
                 <div class="col-md-4">
                     <a href="/" class="btn btn-primary">Ver Equipos</a>
                 </div>
-
             </div>
         </div>
     </div>
+</div>

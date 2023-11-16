@@ -1,21 +1,21 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 }
 
 a {
-  color: #00b7ff;
+  color: #00b7ff
 }
 
 h1 {
-  color: 15px;
+  color: 15px
 }
 
 figure img {
   height: 300px;
-  background-size: cover;
+  background-size: cover
 }
 
 .player img {
   height: 350px;
-  background-size: cover;
+  background-size: cover
 }

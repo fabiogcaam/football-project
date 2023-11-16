@@ -1,8 +1,8 @@
 const route = require('express').Router()
 const StadiumService = require('../services/stadium.services')
+const { isLoggedIn } = require('../middleware/guard-route')
 
-
-route.get('/:stadiumId', (req, res, next) => {
+route.get('/:stadiumId', isLoggedIn, (req, res, next) => {
 
     const { stadiumId } = req.params
 
@@ -14,7 +14,5 @@ route.get('/:stadiumId', (req, res, next) => {
         })
         .catch(err => next(err))
 })
-
-
 
 module.exports = route
