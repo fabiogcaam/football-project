@@ -1,12 +1,15 @@
 <div class="container ">
     <div class="row mt-5">
-        <h1>Detalle de {{player.player.name}}</h1>
-        <hr>
-        <div class="col-6 mt-5">
-            <figure class="player">
-                <img src="{{player.player.photo}}" alt="{{player.player.name}}">
-            </figure>
-        </div>
+        <<<<<<< HEAD <h1>Detalle de {{player.player.name}}</h1>
+            =======
+            <h1 class="lista">Detalle de {{data.player.name}}</h1>
+            >>>>>>> 196874379eb49dcbd8a483290023933d0afaa676
+            <hr>
+            <div class="col-6 mt-5">
+                <figure class="player">
+                    <img src="{{player.player.photo}}" alt="{{player.player.name}}">
+                </figure>
+            </div>
     </div>
     <div class="row">
         <div class="col-6">
@@ -27,12 +30,15 @@
                         asistencias
                     </p>
                     <h5>Tiros:</h5>
+
                     <p>Ha realizado {{player.statistics.[0].shots.total}}, de los cuales
                         {{player.statistics.[0].shots.on}}
+
                         fueron a
                         porteria
                     </p>
                     <h5>Tarjetas:</h5>
+
                     <p>Ha recibido {{player.statistics.[0].cards.yellow}} amarillas y
                         {{player.statistics.[0].cards.red}}
                         rojas, de

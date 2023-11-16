@@ -1,18 +1,20 @@
-<div class="container mt-5">
-    <h1>Lista de Equipos</h1>
-    <hr>
-    {{#each teams}}
-    <div class="row mt-5 mb-5">
-        <div class="col-6">
-            <h5 class="card-title">{{name}}</h5>
+<div class="lista-equipos">
+    <div class="container mt-5">
+        <h1 class="lista">Lista de Equipos</h1>
+        <hr>
+        {{#each teams}}
+        <div class="row mt-5 mb-5">
+            <div class="col-6">
+                <h5 class="card-title">{{name}}</h5>
+            </div>
+            <div class="col-3">
+                <a href="/teams/{{this.team_id}}/details" class="btn btn-dark">Ver detalles</a>
+            </div>
+            <div class="col-3">
+                <a href="/players/{{this.team_id}}/team" class="btn btn-primary">Ver Jugadores</a>
+            </div>
         </div>
-        <div class="col-3">
-            <a href="/teams/{{this.team_id}}/details" class="btn btn-dark">Ver detalles</a>
-        </div>
-        <div class="col-3">
-            <a href="/players/{{this.team_id}}/team" class="btn btn-primary">Ver Jugadores</a>
-        </div>
+        <hr>
+        {{/each}}
     </div>
-    <hr>
-    {{/each}}
 </div>
