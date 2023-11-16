@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(142, 191, 255);
 }
 
 a {
@@ -22,7 +23,7 @@ figure img {
 
 .pant-inicio {
   background-image: url('../images/photo principal.jpg');
-  height: 650px;
+  height: 700px;
   background-position: center;
   background-size: cover;
   display: flex;
@@ -30,3 +31,20 @@ figure img {
   padding-top: 8%;
 }
 
+.title{
+font-size: 4.5em;
+font-style: italic;
+font-weight: bold;
+text-transform: uppercase;
+color: rgb(1, 95, 203);
+
+}
+
+.lista{
+font-weight: bold;
+color: rgb(1, 95, 203);
+}
+.mb-3{
+font-weight: bold;
+color: rgb(1, 95, 203);
+}

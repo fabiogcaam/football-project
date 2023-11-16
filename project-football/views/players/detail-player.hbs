@@ -1,6 +1,6 @@
 <div class="container ">
     <div class="row mt-5">
-        <h1>Detalle de {{data.player.name}}</h1>
+        <h1 class="lista">Detalle de {{data.player.name}}</h1>
         <hr>
         <div class="col-4 mt-5">
             <figure class="player">
@@ -25,12 +25,14 @@
                         asistencias
                     </p>
                     <h5>Tiros:</h5>
-                    <p>Ha realizado {{data.statistics.[0].shots.total}}, de los cuales {{data.statistics.[0].shots.on}}
+                    <p>Ha realizado {{data.statistics.[0].shots.total}}, de los cuales
+                        {{data.statistics.[0].shots.on}}
                         fueron a
                         porteria
                     </p>
                     <h5>Tarjetas:</h5>
-                    <p>Ha recibido {{data.statistics.[0].cards.yellow}} amarillas y {{data.statistics.[0].cards.red}}
+                    <p>Ha recibido {{data.statistics.[0].cards.yellow}} amarillas y
+                        {{data.statistics.[0].cards.red}}
                         rojas, de
                         las cuales {{data.statistics.[0].cards.yellowred}} fueron por doble amarilla</p>
                 </div>

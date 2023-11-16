@@ -9,7 +9,7 @@ require("./config/session.config")(app)
 
 
 const capitalize = require("./utils/capitalize");
-const projectName = "Iron Football";
+const projectName = "iron football";
 
 app.locals.appTitle = `${capitalize(projectName)}`
 
