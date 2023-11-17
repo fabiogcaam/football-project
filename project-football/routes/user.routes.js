@@ -33,20 +33,6 @@ router.get("/list", isLoggedIn, checkRole("ADMIN"), (req, res, next) => {
 
 })
 
-// router.post('/addPlayer/:idPlayer', isLoggedIn, (req, res, next) => {
-
-//     const { idPlayer } = req.params
-
-//     User
-//         .findById(req.session.currentUser.id)
-//         .then(user => {
-//             isFavourite.push(idPlayer)
-//             console.log(isFavourite)
-//         })
-//         .catch(err => next(err))
-
-// })
-
 router.get('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
 
     const { id } = req.params

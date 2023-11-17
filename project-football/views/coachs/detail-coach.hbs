@@ -1,16 +1,19 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-6 mt-5">
-            <h1 class="lista">Detalle de {{coach.name}}</h1>
-            <hr>
-            <h3>{{coach.firstname}} {{coach.lastname}}</h3>
-            <p> Tiene {{coach.age}} de edad y es proveniente de {{coach.nationality}}</p>
-            <div>
-                <p>Nació en el {{coach.birth.date}}, en la ciudad de {{coach.birth.place}} en {{coach.birth.country}}
-                </p>
-                <p>Debutó como entrenador profesional en {{coach.career.[3].start}}</p>
+<div class="detalle">
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-6 mt-5">
+                <h1 class="lista text-white">Detalle de {{coach.name}}</h1>
+                <hr>
+                <h3 class="text-white mb-3">{{coach.firstname}} {{coach.lastname}}</h3>
+                <h5 class="text-white"> Tiene {{coach.age}} de edad y es proveniente de {{coach.nationality}}</h5>
+                <div>
+                    <h5 class="text-white">Nació en el {{coach.birth.date}}, en la ciudad de {{coach.birth.place}} en
+                        {{coach.birth.country}}
+                    </h5>
+                    <h5 class="text-white">Debutó como entrenador profesional en {{coach.career.[3].start}}</h5>
+                </div>
+                <a href="/leagues" class="btn btn-dark mt-3">Volver a Ligas</a>
             </div>
-            <a href="/leagues" class="btn btn-dark">Volver a Ligas</a>
         </div>
     </div>
 </div>

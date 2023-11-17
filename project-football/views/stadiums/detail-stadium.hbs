@@ -1,17 +1,21 @@
-<div class="container">
-    <div class="row mt-5">
-        <h1 class="mb-3">Detalle de {{stadium.name}}</h1>
-        <hr>
-        <div class="col-4">
-            <figure class="estadio">
-                <img src="{{stadium.image}}" alt="{{stadium.name}}">
-            </figure>
-        </div>
-        <div class="col-8">
-            <h3>El estadio de {{stadium.name}}</h3>
-            <p>Tiene una capacidad de {{stadium.capacity}}, se encuentra ubicado en {{stadium.address}} en la ciudad de
-                {{stadium.city}}</p>
-            <a href="/leagues" class="btn btn-dark">Volver a ligas</a>
+<div class="detalle">
+    <div class="container">
+        <div class="row pt-5">
+            <h1 class="mb-3 text-white">Detalle de {{stadium.name}}</h1>
+            <hr>
+            <div class="col-4">
+                <figure class="estadio">
+                    <img src="{{stadium.image}}" alt="{{stadium.name}}">
+                </figure>
+            </div>
+            <div class="col-8">
+                <h3 class="text-white">El estadio de {{stadium.name}}</h3>
+                <h5 class="text-white">Tiene una capacidad de {{stadium.capacity}}, se encuentra ubicado en
+                    {{stadium.address}} en la ciudad
+                    de
+                    {{stadium.city}}</h5>
+                <a href="/leagues" class="btn btn-dark mt-3">Volver a ligas</a>
+            </div>
         </div>
     </div>
 </div>
